@@ -3,14 +3,17 @@ using CalculatorProject;
 
 namespace Tests
 {
-    public class CalculatorTests
+    public class AddTests
     {
+        private Calculator _calculator;
+
+        [SetUp]
+        public void Setup() => _calculator = new Calculator();
+
         [Test]
         public void Add_returns_zero_when_both_inputs_are_zero()
         {
-            var calculator = new Calculator();
-
-            var result = calculator.Add(0, 0);
+            var result = _calculator.Add(0, 0);
 
             Assert.That(result, Is.EqualTo(0), "Calculator did not return zero");
         }
@@ -23,9 +26,7 @@ namespace Tests
         [TestCase(6789, 345, 7134)]
         public void Add_returns_expected_result_for_given_inputs(int a, int b, int expected)
         {
-            var calculator = new Calculator();
-
-            var result = calculator.Add(a, b);
+            var result = _calculator.Add(a, b);
 
             Assert.That(result, Is.EqualTo(expected), $"Basic addition did not return {expected}");
         }
