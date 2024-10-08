@@ -10,14 +10,7 @@ namespace Tests
         [SetUp]
         public void Setup() => _calculator = new Calculator();
 
-        [Test]
-        public void Add_returns_zero_when_both_inputs_are_zero()
-        {
-            var result = _calculator.Add(0, 0);
-
-            Assert.That(result, Is.EqualTo(0), "Calculator did not return zero");
-        }
-
+        [TestCase(0, 0, 0)]
         [TestCase(1, 2, 3)]
         [TestCase(3, 8, 11)]
         [TestCase(0, 8, 8)]
