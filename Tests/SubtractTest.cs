@@ -12,6 +12,11 @@ namespace Tests
 
         [TestCase(1, 0, 1)]
         [TestCase(5, 2, 3)]
+        [TestCase(1, 2, -1)]
+        [TestCase(1, -2, 3)]
+        [TestCase(-5, 10, -15)]
+        [TestCase(-5, -10, 5)]
+        [TestCase(305, -12345, 12650)]
         public void Subtract_returns_zero_when_inputs_are_one_and_zero(int a, int b, int expected)
         {
             var _calculator = new Calculator();
