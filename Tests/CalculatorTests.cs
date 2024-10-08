@@ -63,5 +63,13 @@ namespace Tests
 
             Assert.That(result, Is.EqualTo(expected), $"Division did not return {expected}");
         }
+
+        [Test]
+        public void Divide_TenAndThree_ReturnsThreePointThreeRecurring()
+        {
+            var result = _calculator.Divide(10, 3);
+
+            Assert.That(result, Is.EqualTo(3.3333333333333333333333333333), $"Division did not return three point three recurring");
+        }
     }
 }
