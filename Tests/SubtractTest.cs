@@ -19,8 +19,6 @@ namespace Tests
         [TestCase(305, -12345, 12650)]
         public void Subtract_returns_zero_when_inputs_are_one_and_zero(int a, int b, int expected)
         {
-            var _calculator = new Calculator();
-
             var result = _calculator.Subtract(a, b);
 
             Assert.That(result, Is.EqualTo(expected), $"Subtract method did not return {expected}");
