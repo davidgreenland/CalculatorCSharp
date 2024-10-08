@@ -17,7 +17,7 @@ namespace Tests
         [TestCase(-5, 10, -15)]
         [TestCase(-5, -10, 5)]
         [TestCase(305, -12345, 12650)]
-        public void Subtract_returns_zero_when_inputs_are_one_and_zero(int a, int b, int expected)
+        public void Subtract_returns_expected_result_for_given_inputs(int a, int b, int expected)
         {
             var result = _calculator.Subtract(a, b);
 
