@@ -11,6 +11,10 @@ namespace Tests
         public void Setup() => _calculator = new Calculator();
 
         [TestCase(1, 1, 1)]
+        [TestCase(3, 4, 12)]
+        [TestCase(-3, 4, -12)]
+        [TestCase(-3, -4, 12)]
+        [TestCase(98, 1423, 139454)]
         public void Multiply_returns_one_when_inputs_are_both_one(int a, int b, int expected)
         {
             var result = _calculator.Multiply(a, b);
