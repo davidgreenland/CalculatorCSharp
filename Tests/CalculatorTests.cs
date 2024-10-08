@@ -15,14 +15,14 @@ namespace Tests
             Assert.That(result, Is.EqualTo(0), "Calculator did not return zero");
         }
 
-        [Test]
-        public void Add_returns_three_when_inputs_are_one_and_two()
+        [TestCase(1, 2, 3)]
+        public void Add_returns_expected_result_for_given_inputs(int a, int b, int expected)
         {
             var calculator = new Calculator();
 
-            var result = calculator.Add(1, 2);
+            var result = calculator.Add(a, b);
 
-            Assert.That(result, Is.EqualTo(3), "Basic addition did not return 3");
+            Assert.That(result, Is.EqualTo(expected), $"Basic addition did not return {expected}");
         }
     }
 }
