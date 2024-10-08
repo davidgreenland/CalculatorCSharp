@@ -5,24 +5,20 @@ namespace Tests
 {
     public class SubtractTests
     {
-        [Test]
-        public void Subtract_returns_zero_when_inputs_are_one_and_zero()
+        private Calculator _calculator;
+
+        [SetUp]
+        public void Setup() => _calculator = new Calculator();
+
+        [TestCase(1, 0, 1)]
+        [TestCase(5, 2, 3)]
+        public void Subtract_returns_zero_when_inputs_are_one_and_zero(int a, int b, int expected)
         {
-            var calculator = new Calculator();
+            var _calculator = new Calculator();
 
-            var result = calculator.Subtract(1, 1);
+            var result = _calculator.Subtract(a, b);
 
-            Assert.That(result, Is.EqualTo(0));
-        }
-
-        [Test]
-        public void Subtract_returns_three_when_inputs_are_five_and_two()
-        {
-            var calculator = new Calculator();
-
-            var result = calculator.Subtract(5, 2);
-
-            Assert.That(result, Is.EqualTo(3));
+            Assert.That(result, Is.EqualTo(expected), $"Subtract method did not return {expected}");
         }
     }
 }
