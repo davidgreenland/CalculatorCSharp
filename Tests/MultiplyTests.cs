@@ -10,12 +10,12 @@ namespace Tests
         [SetUp]
         public void Setup() => _calculator = new Calculator();
 
-        [Test]
-        public void Multiply_returns_one_when_inputs_are_both_one()
+        [TestCase(1, 1, 1)]
+        public void Multiply_returns_one_when_inputs_are_both_one(int a, int b, int expected)
         {
-            var result = _calculator.Multiply(1, 1);
+            var result = _calculator.Multiply(a, b);
 
-            Assert.That(result, Is.EqualTo(1), $"Basic multiplication did not return one");
+            Assert.That(result, Is.EqualTo(expected), $"Multiplication did not return {expected}");
         }
     }
 }
