@@ -49,5 +49,13 @@ namespace Tests
 
             Assert.That(result, Is.EqualTo(expected), $"Multiplication did not return {expected}");
         }
+
+        [Test]
+        public void Divide_returns_one_when_inputs_are_both_one()
+        {
+            var result = _calculator.Divide(1, 1);
+
+            Assert.That(result, Is.EqualTo(1), $"Division did not return one");
+        }
     }
 }
