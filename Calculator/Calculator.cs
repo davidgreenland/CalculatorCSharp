@@ -2,8 +2,8 @@
 
 public class Calculator
 {
-    public void Add(int a, int b)
+    public int Add(int a, int b)
     {
-
+        return 0;
     }
 }
