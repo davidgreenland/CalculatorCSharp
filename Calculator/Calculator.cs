@@ -17,8 +17,8 @@ public class Calculator
         return a * b;
     }
 
-    public double Divide(int a, double b)
+    public decimal Divide(decimal a, decimal b)
     {
-        return 0.5;
+        return a / b;
     }
 }

@@ -50,12 +50,18 @@ namespace Tests
             Assert.That(result, Is.EqualTo(expected), $"Multiplication did not return {expected}");
         }
 
-        [Test]
-        public void Divide_returns_one_when_inputs_are_both_one()
+        [TestCase(1, 1, 1)]
+        [TestCase(0, 1, 0)]
+        [TestCase(10, 2, 5)]
+        [TestCase(1, 2, 0.5)]
+        [TestCase(1, 2, 0.5)]
+        [TestCase(198, 5, 39.6)]
+        [TestCase(10, -5, -2)]
+        public void Divide_GivenTwoInputs_ReturnsExpected(decimal a, decimal b, decimal expected)
         {
-            var result = _calculator.Divide(1, 1);
+            var result = _calculator.Divide(a, b);
 
-            Assert.That(result, Is.EqualTo(1), $"Division did not return one");
+            Assert.That(result, Is.EqualTo(expected), $"Division did not return {expected}");
         }
     }
 }
