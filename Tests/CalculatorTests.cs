@@ -71,5 +71,12 @@ namespace Tests
 
             Assert.That(result, Is.EqualTo(3.3333333333333333333333333333), $"Division did not return three point three recurring");
         }
+
+        [Test]
+        public void Divide_WhenByZero_ReturnsAnError()
+        {
+            var result = Assert.Throws<ArgumentException>(() => _calculator.Divide(2, 0));
+            Assert.That(result!.Message, Is.EqualTo("Cannot divide by zero"));
+        }
     }
 }
