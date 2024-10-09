@@ -34,6 +34,6 @@ public class Calculator
             return a;
         }
 
-        return 0;
+        return Multiply(a, a);
     }
 }
