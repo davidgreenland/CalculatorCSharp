@@ -26,4 +26,9 @@ public class Calculator
 
         return a / b;
     }
+
+    public int Power(int a, int b)
+    {
+        return 0;
+    }
 }

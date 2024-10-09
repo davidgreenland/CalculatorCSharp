@@ -78,5 +78,16 @@ namespace Tests
             var result = Assert.Throws<ArgumentException>(() => _calculator.Divide(2, 0));
             Assert.That(result!.Message, Is.EqualTo("Cannot divide by zero"));
         }
+
+        [TestCase(1)]
+        [TestCase(2)]
+        [TestCase(34)]
+        [TestCase(10989)]
+        public void Power_ReturnsFirstNumber_WhenRaisedToPowerOne(int a)
+        {
+            var result = _calculator.Power(a, 1);
+
+            Assert.That(result, Is.EqualTo(a));
+        }
     }
 }
