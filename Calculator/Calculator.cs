@@ -7,7 +7,7 @@ public class Calculator
         return a + b;
     }
 
-    public int Subtract(int a, int b) 
+    public int Subtract(int a, int b)
     {
         return a - b;
     }
@@ -29,17 +29,13 @@ public class Calculator
 
     public int Power(int a, int b)
     {
+        var result = a;
+
         if (b == 1)
         {
             return a;
         }
 
-        if (b == 2)
-        {
-            return Multiply(a, a);
-
-        }
-
-        return Multiply(Multiply(a, a), a);
+        return Multiply(result, Power(a, b - 1));
     }
 }
