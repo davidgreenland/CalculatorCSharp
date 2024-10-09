@@ -34,6 +34,12 @@ public class Calculator
             return a;
         }
 
-        return Multiply(a, a);
+        if (b == 2)
+        {
+            return Multiply(a, a);
+
+        }
+
+        return Multiply(Multiply(a, a), a);
     }
 }
