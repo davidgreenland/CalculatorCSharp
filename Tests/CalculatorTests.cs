@@ -100,5 +100,16 @@ namespace Tests
 
             Assert.That(result, Is.EqualTo(expected));
         }
+
+        [TestCase(3, 27)]
+        [TestCase(7, 343)]
+        [TestCase(9, 729)]
+        [TestCase(14, 2744)]
+        public void Power_WhenCubing_ReturnsExpected(int a, int expected)
+        {
+            var result = _calculator.Power(a, 3);
+
+            Assert.That(result, Is.EqualTo(expected));
+        }
     }
 }
