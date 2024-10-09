@@ -29,6 +29,11 @@ public class Calculator
 
     public int Power(int a, int b)
     {
-        return a;
+        if (b == 1)
+        {
+            return a;
+        }
+
+        return 0;
     }
 }

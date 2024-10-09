@@ -83,11 +83,22 @@ namespace Tests
         [TestCase(2)]
         [TestCase(34)]
         [TestCase(10989)]
-        public void Power_ReturnsFirstNumber_WhenRaisedToPowerOne(int a)
+        public void Power_WhenRaisedToPowerOne_ReturnsFirstNumber(int a)
         {
             var result = _calculator.Power(a, 1);
 
             Assert.That(result, Is.EqualTo(a));
+        }
+
+        [TestCase(3, 9)]
+        [TestCase(7, 49)]
+        [TestCase(45, 2025)]
+        [TestCase(3198, 10_227_204)]
+        public void Power_WhenSquaring_ReturnsExpected(int a, int expected)
+        {
+            var result = _calculator.Power(a, 2);
+
+            Assert.That(result, Is.EqualTo(expected));
         }
     }
 }
