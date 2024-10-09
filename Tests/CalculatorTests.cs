@@ -111,5 +111,17 @@ namespace Tests
 
             Assert.That(result, Is.EqualTo(expected));
         }
+
+        [TestCase(10, 4, 10000)]
+        [TestCase(7, 5, 16807)]
+        [TestCase(2, 10, 1024)]
+        [TestCase(2, 12, 4096)]
+        [TestCase(3, 14, 4_782_969)]
+        public void Power_WhenRaising_ReturnsExpected(int a, int b, int expected)
+        {
+            var result = _calculator.Power(a, b);
+
+            Assert.That(result, Is.EqualTo(expected));
+        }
     }
 }
