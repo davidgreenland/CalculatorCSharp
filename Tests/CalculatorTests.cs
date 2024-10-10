@@ -2,6 +2,7 @@
 using CalculatorProject;
 using Moq;
 using Microsoft.Extensions.Logging;
+using TestingNuget;
 
 namespace Tests
 {
@@ -9,12 +10,15 @@ namespace Tests
     {
         private Calculator _calculator;
         private Mock<ILogger> _loggerMock;
+        private Mock<IInterestCalculator> _interestCalculatorMock;
 
         [SetUp]
         public void Setup() 
         {
             _loggerMock = new Mock<ILogger>();
-            _calculator = new Calculator(_loggerMock.Object);
+            _interestCalculatorMock = new Mock<IInterestCalculator>();
+            _interestCalculatorMock.Setup(x => x.Calculate(It.IsAny<decimal>(), It.IsAny<decimal>(), It.IsAny<int>())).Returns(1m);
+            _calculator = new Calculator(_loggerMock.Object, _interestCalculatorMock.Object);
         } 
 
         [TestCase(0, 0, 0)]
@@ -145,6 +149,18 @@ namespace Tests
                     It.IsAny<Exception>(),
                     It.IsAny<Func<It.IsAnyType, Exception?, string>>()),
                 Times.Once);
+        }
+
+        [Test]
+        public void Interest_ShouldUseInterestLibrary()
+        {
+            var rate = 4.2m;
+            var principle = 100_000m;
+            var periodYears = 25;
+
+            var result = _calculator.Interest(rate, principle, periodYears);
+
+            _interestCalculatorMock.Verify(x => x.Calculate(rate, principle, periodYears), Times.Once);
         }
     }
 }
