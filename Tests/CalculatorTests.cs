@@ -123,5 +123,16 @@ namespace Tests
 
             Assert.That(result, Is.EqualTo(expected));
         }
+
+        [TestCase(10, 0)]
+        [TestCase(3, 0)]
+        [TestCase(89990, 0)]
+        public void Power_WhenPowerZero_ReturnsOne(int a, int b)
+        {
+            var expected = 1;
+            var result = _calculator.Power(a, b);
+
+            Assert.That(result, Is.EqualTo(expected));
+        }
     }
 }
