@@ -1,14 +1,17 @@
 ﻿using Microsoft.Extensions.Logging;
+using TestingNuget;
 
 namespace CalculatorProject;
 
 public class Calculator
 {
     private readonly ILogger _logger;
+    private readonly IInterestCalculator _interestCalculator;
 
-    public Calculator(ILogger logger)
+    public Calculator(ILogger logger, IInterestCalculator interestCalculator)
     {
         _logger = logger;
+        _interestCalculator = interestCalculator;
     }
 
     public int Add(int a, int b)
@@ -47,5 +50,10 @@ public class Calculator
         }
 
         return Multiply(result, Power(a, b - 1));
+    }
+
+    public decimal Interest(decimal rate, decimal principle, int periodYears)
+    {
+        return _interestCalculator.Calculate(rate, principle, periodYears);
     }
 }
