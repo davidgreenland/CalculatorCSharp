@@ -19,6 +19,11 @@ public class Calculator
 
     public decimal Divide(decimal a, decimal b)
     {
+        if (b == 0)
+        {
+            throw new ArgumentException("Cannot divide by zero");
+        }
+
         return a / b;
     }
 }
