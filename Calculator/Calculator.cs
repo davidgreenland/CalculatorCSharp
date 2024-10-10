@@ -1,9 +1,19 @@
-﻿namespace CalculatorProject;
+﻿using Microsoft.Extensions.Logging;
+
+namespace CalculatorProject;
 
 public class Calculator
 {
+    private readonly ILogger _logger;
+
+    public Calculator(ILogger logger)
+    {
+        _logger = logger;
+    }
+
     public int Add(int a, int b)
     {
+        _logger.LogInformation($"Add method called with {a} + {b}");
         return a + b;
     }
 

@@ -1,14 +1,21 @@
 ﻿using NUnit.Framework;
 using CalculatorProject;
+using Moq;
+using Microsoft.Extensions.Logging;
 
 namespace Tests
 {
     public class CalculatorTests
     {
         private Calculator _calculator;
+        private Mock<ILogger> _loggerMock;
 
         [SetUp]
-        public void Setup() => _calculator = new Calculator();
+        public void Setup() 
+        {
+            _loggerMock = new Mock<ILogger>();
+            _calculator = new Calculator(_loggerMock.Object);
+        } 
 
         [TestCase(0, 0, 0)]
         [TestCase(1, 2, 3)]
@@ -122,6 +129,22 @@ namespace Tests
             var result = _calculator.Power(a, b);
 
             Assert.That(result, Is.EqualTo(expected));
+        }
+
+        [Test]
+        public void Add_ShouldLogInformation()
+        {
+            var result = _calculator.Add(2, 56);
+
+            Assert.That(result, Is.EqualTo(58));
+
+            _loggerMock.Verify(logger => logger.Log(
+                    It.IsAny<LogLevel>(),
+                    It.IsAny<EventId>(),
+                    It.IsAny<It.IsAnyType>(),
+                    It.IsAny<Exception>(),
+                    It.IsAny<Func<It.IsAnyType, Exception?, string>>()),
+                Times.Once);
         }
     }
 }
