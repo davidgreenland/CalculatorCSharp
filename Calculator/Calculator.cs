@@ -12,7 +12,7 @@ public class Calculator
         return a - b;
     }
 
-    public int Multiply(int a, int b)
+    public decimal Multiply(decimal a, decimal b)
     {
         return a * b;
     }
@@ -27,15 +27,19 @@ public class Calculator
         return a / b;
     }
 
-    public int Power(int a, int b)
+    public decimal Power(decimal a, int power)
     {
         var result = a;
 
-        if (b == 1)
+        if (power == 0)
+        {
+            return 1;
+        }
+        if (power == 1)
         {
             return a;
         }
 
-        return Multiply(result, Power(a, b - 1));
+        return Multiply(result, Power(a, power - 1));
     }
 }
