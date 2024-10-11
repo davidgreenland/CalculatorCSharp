@@ -33,15 +33,12 @@ public class Calculator
         {
             return 1;
         }
-        if (power == 1)
-        {
-            return a;
-        }
 
         if (power > 0)
         {
             return Multiply(a, Power(a, power - 1));
         }
+
         return Divide(1, Power(a, -power));
     }
 }
