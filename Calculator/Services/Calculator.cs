@@ -25,7 +25,7 @@ public class Calculator
         return a - b;
     }
 
-    public int Multiply(int a, int b)
+    public decimal Multiply(decimal a, decimal b)
     {
         return a * b;
     }
@@ -40,16 +40,19 @@ public class Calculator
         return a / b;
     }
 
-    public int Power(int a, int b)
+    public decimal Power(decimal a, int power)
     {
-        var result = a;
-
-        if (b == 1)
+        if (power == 0)
         {
-            return a;
+            return 1;
         }
 
-        return Multiply(result, Power(a, b - 1));
+        if (power > 0)
+        {
+            return Multiply(a, Power(a, power - 1));
+        }
+
+        return Divide(1, Power(a, -power));
     }
 
     public decimal Interest(decimal rate, decimal principle, int periodYears)
