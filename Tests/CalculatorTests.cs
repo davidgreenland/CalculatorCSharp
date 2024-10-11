@@ -1,10 +1,9 @@
 ﻿using NUnit.Framework;
-using CalculatorProject;
 using Moq;
 using Microsoft.Extensions.Logging;
 using TestingNuget;
 
-namespace Tests
+namespace Calculator.Tests
 {
     public class CalculatorTests
     {
@@ -13,13 +12,14 @@ namespace Tests
         private Mock<IInterestCalculator> _interestCalculatorMock;
 
         [SetUp]
-        public void Setup() 
+        public void Setup()
         {
             _loggerMock = new Mock<ILogger>();
             _interestCalculatorMock = new Mock<IInterestCalculator>();
+
             _interestCalculatorMock.Setup(x => x.Calculate(It.IsAny<decimal>(), It.IsAny<decimal>(), It.IsAny<int>())).Returns(1m);
             _calculator = new Calculator(_loggerMock.Object, _interestCalculatorMock.Object);
-        } 
+        }
 
         [TestCase(0, 0, 0)]
         [TestCase(1, 2, 3)]
@@ -68,6 +68,7 @@ namespace Tests
         [TestCase(1, 2, 0.5)]
         [TestCase(198, 5, 39.6)]
         [TestCase(10, -5, -2)]
+        [TestCase(10, 3, 3.3333333333333333333333333333)]
         public void Divide_GivenTwoInputs_ReturnsExpected(decimal a, decimal b, decimal expected)
         {
             var result = _calculator.Divide(a, b);
@@ -75,18 +76,12 @@ namespace Tests
             Assert.That(result, Is.EqualTo(expected), $"Division did not return {expected}");
         }
 
-        [Test]
-        public void Divide_TenAndThree_ReturnsThreePointThreeRecurring()
-        {
-            var result = _calculator.Divide(10, 3);
-
-            Assert.That(result, Is.EqualTo(3.3333333333333333333333333333), $"Division did not return three point three recurring");
-        }
 
         [Test]
         public void Divide_WhenByZero_ReturnsAnError()
         {
             var result = Assert.Throws<ArgumentException>(() => _calculator.Divide(2, 0));
+
             Assert.That(result!.Message, Is.EqualTo("Cannot divide by zero"));
         }
 
@@ -96,7 +91,9 @@ namespace Tests
         [TestCase(10989)]
         public void Power_WhenRaisedToPowerOne_ReturnsFirstNumber(int a)
         {
-            var result = _calculator.Power(a, 1);
+            const int POWER_ONE = 1;
+
+            var result = _calculator.Power(a, POWER_ONE);
 
             Assert.That(result, Is.EqualTo(a));
         }
@@ -107,7 +104,9 @@ namespace Tests
         [TestCase(3198, 10_227_204)]
         public void Power_WhenSquaring_ReturnsExpected(int a, int expected)
         {
-            var result = _calculator.Power(a, 2);
+            const int POWER_TWO = 2;
+
+            var result = _calculator.Power(a, POWER_TWO);
 
             Assert.That(result, Is.EqualTo(expected));
         }
@@ -118,7 +117,10 @@ namespace Tests
         [TestCase(14, 2744)]
         public void Power_WhenCubing_ReturnsExpected(int a, int expected)
         {
-            var result = _calculator.Power(a, 3);
+            const int POWER_THREE = 3;
+
+
+            var result = _calculator.Power(a, POWER_THREE);
 
             Assert.That(result, Is.EqualTo(expected));
         }
