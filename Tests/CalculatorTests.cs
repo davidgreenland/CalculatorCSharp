@@ -134,5 +134,19 @@ namespace Tests
 
             Assert.That(result, Is.EqualTo(expected));
         }
+
+        [TestCase(2, -1, 0.5)]
+        [TestCase(2, -2, 0.25)]
+        [TestCase(2, -3, 0.125)]
+        [TestCase(10, -3, 0.001)]
+        [TestCase(2, -5, 0.03125)]
+        [TestCase(16, -3, 0.000244140625)]
+        [TestCase(10, -9, 0.000_000_001)]
+        public void Power_WhenPowerNegative_ReturnsExpected(int a, int b, decimal expected)
+        {
+            var result = _calculator.Power(a, b);
+
+            Assert.That(result, Is.EqualTo(expected));
+        }
     }
 }
