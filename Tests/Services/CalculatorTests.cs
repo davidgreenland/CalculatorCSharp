@@ -1,9 +1,10 @@
 ﻿using NUnit.Framework;
+using SimpleCalculator.Services;
 using Moq;
 using Microsoft.Extensions.Logging;
 using TestingNuget;
 
-namespace Calculator.Tests
+namespace SimpleCalculator.Tests.Services
 {
     public class CalculatorTests
     {

@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35303.130
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Calculator", "Calculator\Calculator.csproj", "{CBC43E42-482B-4134-9CD6-7DF72960B050}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleCalculator", "Calculator\SimpleCalculator.csproj", "{CBC43E42-482B-4134-9CD6-7DF72960B050}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Calculator.Tests", "Tests\Calculator.Tests.csproj", "{DF150186-DDA6-4B61-9F96-0A9267456F73}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleCalculator.Tests", "Tests\SimpleCalculator.Tests.csproj", "{DF150186-DDA6-4B61-9F96-0A9267456F73}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

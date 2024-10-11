@@ -1,4 +1,4 @@
-﻿using CalculatorProject;
+﻿using SimpleCalculator.Services;
 using Microsoft.Extensions.Logging;
 using TestingNuget;
 
