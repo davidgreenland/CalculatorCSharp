@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
 using TestingNuget;
 
-namespace CalculatorProject;
+namespace Calculator;
 
 public class Calculator
 {
