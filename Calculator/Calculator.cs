@@ -29,8 +29,6 @@ public class Calculator
 
     public decimal Power(decimal a, int power)
     {
-        var result = a;
-
         if (power == 0)
         {
             return 1;
@@ -40,6 +38,10 @@ public class Calculator
             return a;
         }
 
-        return Multiply(result, Power(a, power - 1));
+        if (power > 0)
+        {
+            return Multiply(a, Power(a, power - 1));
+        }
+        return Divide(1, Power(a, -power));
     }
 }
