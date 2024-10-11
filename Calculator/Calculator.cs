@@ -7,12 +7,12 @@ public class Calculator
         return a + b;
     }
 
-    public int Subtract(int a, int b) 
+    public int Subtract(int a, int b)
     {
         return a - b;
     }
 
-    public int Multiply(int a, int b)
+    public decimal Multiply(decimal a, decimal b)
     {
         return a * b;
     }
@@ -25,5 +25,20 @@ public class Calculator
         }
 
         return a / b;
+    }
+
+    public decimal Power(decimal a, int power)
+    {
+        if (power == 0)
+        {
+            return 1;
+        }
+
+        if (power > 0)
+        {
+            return Multiply(a, Power(a, power - 1));
+        }
+
+        return Divide(1, Power(a, -power));
     }
 }
