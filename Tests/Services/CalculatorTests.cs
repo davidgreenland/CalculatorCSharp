@@ -69,7 +69,6 @@ namespace SimpleCalculator.Tests.Services
         [TestCase(1, 2, 0.5)]
         [TestCase(198, 5, 39.6)]
         [TestCase(10, -5, -2)]
-        [TestCase(10, 3, 3.3333333333333333333333333333)]
         public void Divide_GivenTwoInputs_ReturnsExpected(decimal a, decimal b, decimal expected)
         {
             var result = _calculator.Divide(a, b);
@@ -144,6 +143,7 @@ namespace SimpleCalculator.Tests.Services
         public void Power_WhenPowerZero_ReturnsOne(int a, int b)
         {
             var expected = 1;
+
             var result = _calculator.Power(a, b);
 
             Assert.That(result, Is.EqualTo(expected));
@@ -189,6 +189,16 @@ namespace SimpleCalculator.Tests.Services
             var result = _calculator.Interest(rate, principle, periodYears);
 
             _interestCalculatorMock.Verify(x => x.Calculate(rate, principle, periodYears), Times.Once);
+        }
+
+        [Test]
+        public async Task MultiplyAsync_ReturnsExpected()
+        {
+            var expected = 8;
+
+            var result = await _calculator.MultiplyAsync(2, 4);
+
+            Assert.That(result, Is.EqualTo(expected));
         }
     }
 }

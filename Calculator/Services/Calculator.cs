@@ -59,4 +59,11 @@ public class Calculator
     {
         return _interestCalculator.Calculate(rate, principle, periodYears);
     }
+
+    public async Task<int> MultiplyAsync(int a, int b)
+    {
+        await Task.Delay(1000);
+
+        return a * b;
+    }
 }
