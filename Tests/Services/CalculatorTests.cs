@@ -191,12 +191,14 @@ namespace SimpleCalculator.Tests.Services
             _interestCalculatorMock.Verify(x => x.Calculate(rate, principle, periodYears), Times.Once);
         }
 
-        [Test]
-        public async Task MultiplyAsync_ReturnsExpected()
+        [TestCase(1, 1, 1)]
+        [TestCase(3, 4, 12)]
+        [TestCase(-3, 4, -12)]
+        [TestCase(-3, -4, 12)]
+        [TestCase(98, 1423, 139454)]
+        public async Task MultiplyAsync_ReturnsExpected(int a, int b, int expected)
         {
-            var expected = 8;
-
-            var result = await _calculator.MultiplyAsync(2, 4);
+            var result = await _calculator.MultiplyAsync(a, b);
 
             Assert.That(result, Is.EqualTo(expected));
         }
