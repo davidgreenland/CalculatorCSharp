@@ -1,9 +1,22 @@
-﻿namespace CalculatorProject;
+﻿using Microsoft.Extensions.Logging;
+using TestingNuget;
+
+namespace SimpleCalculator.Services;
 
 public class Calculator
 {
+    private readonly ILogger _logger;
+    private readonly IInterestCalculator _interestCalculator;
+
+    public Calculator(ILogger logger, IInterestCalculator interestCalculator)
+    {
+        _logger = logger;
+        _interestCalculator = interestCalculator;
+    }
+
     public int Add(int a, int b)
     {
+        _logger.LogInformation($"Add method called with {a} + {b}");
         return a + b;
     }
 
@@ -40,5 +53,10 @@ public class Calculator
         }
 
         return Divide(1, Power(a, -power));
+    }
+
+    public decimal Interest(decimal rate, decimal principle, int periodYears)
+    {
+        return _interestCalculator.Calculate(rate, principle, periodYears);
     }
 }

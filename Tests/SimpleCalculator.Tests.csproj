@@ -7,13 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="InterestCalculator" Version="1.0.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.1" />
+    <PackageReference Include="Moq" Version="4.20.72" />
     <PackageReference Include="NUnit" Version="4.2.2" />
     <PackageReference Include="NUnit3TestAdapter" Version="4.6.0" />
   </ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\Calculator\Calculator.csproj" />
+		<ProjectReference Include="..\Calculator\SimpleCalculator.csproj" />
 	</ItemGroup>
 
 </Project>
