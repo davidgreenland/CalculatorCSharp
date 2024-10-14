@@ -202,5 +202,17 @@ namespace SimpleCalculator.Tests.Services
 
             Assert.That(result, Is.EqualTo(expected));
         }
+
+        [TestCase(new int[] { 2, 3, 5 }, 2)]
+        [TestCase(new int[] { 3, 6, 8 }, 14)]
+        [TestCase(new int[] { 2, 3, 5, 9, 68 }, 70)]
+        [TestCase(new int[] { 0, 0, 2, 4, 34 }, 40)]
+        [TestCase(new int[] { -4, -3, -10, -9, -68 }, -82)]
+        public void GetSumOfEvenNumbers_ReturnsExpected(int[] input, int expected)
+        {
+            var result = _calculator.SumOfEvenNumbers(input);
+
+            Assert.That(result, Is.EqualTo(expected));
+        }
     }
 }
