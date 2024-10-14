@@ -66,4 +66,20 @@ public class Calculator
 
         return a * b;
     }
+
+    public int SumOfEvenNumbers(IEnumerable<int> numbers)
+    {
+        var total = 0;
+        foreach (var number in numbers)
+        {
+            if (IsEven(number))
+            {
+                total += number;
+            }
+        }
+
+        return total;
+    }
+
+    private bool IsEven(int number) => number % 2 == 0;
 }
